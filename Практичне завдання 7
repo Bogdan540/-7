@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>
+
+int main() {
+    double x1, y1, r1, x2, y2, r2;
+    std::cin >> x1 >> y1 >> r1 >> x2 >> y2 >> r2;
+
+    // Відстань між центрами кіл
+    double d = std::sqrt(std::pow(x2 - x1, 2) + std::pow(y2 - y1, 2));
+
+    // Перевірка кількості точок перетину
+    if (d == 0 && r1 == r2) {
+        std::cout << -1 << std::endl; // Кола збігаються
+    } else if (d > r1 + r2) {
+        std::cout << 0 << std::endl; // Кола не перетинаються (розташовані окремо)
+    } else if (d < std::abs(r1 - r2)) {
+        std::cout << 0 << std::endl; // Кола не перетинаються (одне всередині іншого)
+    } else if (d == r1 + r2 || d == std::abs(r1 - r2)) {
+        std::cout << 1 << std::endl; // Кола мають одну точку дотику
+    } else {
+        std::cout << 2 << std::endl; // Кола мають дві точки перетину
+    }
+
+    return 0;
+}
